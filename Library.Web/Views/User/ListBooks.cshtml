@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Library.Web.ViewModels.BookViewModel>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Publication Date</th>
+            <th>Edition</th>
+            <th>Page Number</th>
+            <th>Total Copies</th>
+            <th>Available Copies</th>
+            <th>ISBN</th>
+            <th>Create Date</th>
+            <th>Change Date</th>
+            <th>Delete Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.ID</td>
+                <td>@book.Title</td>
+                <td>@book.PublicationDate</td>
+                <td>@book.Edition</td>
+                <td>@book.PageNumber</td>
+                <td>@book.TotalCopies</td>
+                <td>@book.AvailableCopies</td>
+                <td>@book.ISBN</td>
+                <td>@book.CreateDate</td>
+                <td>@book.ChangeDate</td>
+                <td>@book.DeleteDate</td>
+            </tr>
+        }
+    </tbody>
+</table>

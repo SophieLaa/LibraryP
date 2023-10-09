@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Library.Web.ViewModels.ManagerViewModel>
+
+<h2>List of Managers</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Department</th>
+            <th>Hire Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var manager in Model)
+        {
+            <tr>
+                <td>@manager.ID</td>
+                <td>@manager.FullName</td>
+                <td>@manager.Department</td>
+                <td>@manager.HireDate</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Library.Web.ViewModels.CategoryViewModel>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="jumbotron">
+        @foreach (var item in Model)
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    @Html.DisplayFor(modelItem => item.Name)
+                    @Html.ActionLink("View all " + item.Name, "Index", new { category = item.Name }, new { @class = "pull-right" })
+                    @using (Html.BeginForm("Filter", "Home", new { category = item.Name }, FormMethod.Post, new { @class = "navbar-form" }))
+                    {
+                        @Html.TextBox("gadgetName", null, new { @class = "form-control", placeholder = "Search in " + item.Name })
+                    }
+                    <!-- Add the following code block -->
+                    @using (Html.BeginForm("Create", "Home", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-inline" }))
+                    {
+                        <div class="form-group">
+                            <label class="sr-only" for="selectedRole">Role</label>
+                          @*  @Html.DropDownList("selectedRole", new SelectList(item.AvailableRoles), "Select Role", new { @class = "form-control" })*@
+                        </div>
+                        <button type="submit" class="btn btn-primary">Upload</button>
+                    }
+                </div>
+                @foreach (var gadget in item.Gadgets)
+                {
+                    @Html.Partial("Gadget", gadget)
+                }
+                <div class="panel-footer">
+                    <!-- The existing code for creating gadgets -->
+                </div>
+            </div>
+        }
+    </div>
+</div>

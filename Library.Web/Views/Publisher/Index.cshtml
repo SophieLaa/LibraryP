@@ -1,0 +1,30 @@
+﻿@model List<Library.Web.Publisher>
+
+<h2>Publishers</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var publisher in Model)
+        {
+            <tr>
+                <td>@publisher.Name</td>
+                <td>@publisher.Address</td>
+                <td>@publisher.PhoneNumber</td>
+                <td>@publisher.Email</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = publisher.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = publisher.ID }, new { onclick = "return confirm('Are you sure you want to delete this publisher?');" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
